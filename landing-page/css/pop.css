@@ -1,0 +1,68 @@
+/*Trigger Button
+.login-trigger {
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(to bottom right, #B05574, #F87E7B);
+    padding: 15px 30px;
+    border-radius: 30px;
+    position: relative; 
+    top: 50%;
+  }
+  */
+  /*Modal*/
+  h4 {
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+  }
+  .close {
+    color: blue;
+    transform: scale(1.2)
+  }
+  .modal-content {
+    font-weight: bold;
+    /*background: linear-gradient(to bottom right,#F87E7B,#B05574);*/
+    background: white;
+  }
+  .form-control {
+    margin: 1em 0;
+  }
+  .form-control:hover, .form-control:focus {
+    box-shadow: none;  
+  }
+  .username, .password, .email {
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+    box-shadow: none;
+    padding-left: 0;
+    font-weight: normal;
+    background: transparent;
+    margin: 8% auto;
+  }
+  .form-control:-webkit-input-placeholder {
+      text-transform: uppercase;
+      font-size: 18px;
+  }
+  .form-control:focus::-webkit-input-placeholder {
+    font-weight: bold;
+    color: #fff;
+  }
+  .btt button {
+    padding: 5px 5px;
+    font-size: 15px;
+  }
+ /* .login {
+    padding: 6px 20px;
+    border-radius: 20px;
+    background: none;
+    border: 2px solid #FAB87F;
+    color: #FAB87F;
+    font-weight: bold;
+    transition: all .5s;
+    margin-top: 1em;
+  }
+  .login:hover {
+    background: #FAB87F;
+    color: #fff;
+  }*/
