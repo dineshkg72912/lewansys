@@ -1,3 +1,16 @@
+<?php
+session_start();
+require_once 'config/config.php';
+$query = "SELECT * FROM student_register ";
+$result = mysqli_query($con, $query);
+while($data= mysqli_fetch_assoc($result)){
+	
+	$rows[] = $data;
+	
+}
+
+
+?>
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -412,27 +425,35 @@
 											<th>Subject</th>
 											<th>Updated</th>
 											<th>Status</th>
-											<th>Priority</th>
-											<th>Assigned to</th>
-											<th></th>
+											<th>Email</th>
+											<th>Mobile number</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
+									<?php foreach ($rows as $row){?>
 										<tr>
 											<td><div class="checkbox">
 													<label><input type="checkbox" name="optionsCheckboxes"></label>
 												</div>
 											</td>
-											<td class="nowrap"><img src="assets/images/avatar2.png" alt="Jessica Brown" width="36" height="36"><strong>Ravi</strong></td>
-											<td class="maw-320"><span class="truncate">Aliquam viverra, metus eget dictum vestibulum, er.</span></td>
+											<td class="nowrap"><img src="assets/images/avatar2.png" alt="Jessica Brown" width="36" height="36"><strong><?php echo $row['student_name']; ?></strong></td>
+											<td class="maw-320"><span class="truncate">Aliquam viverra, metus eget dictum, er.</span></td>
 											<td>21-Jun-2016</td>
 											<td><span class="label label-info label-pill">New</span></td>
-											<td>Low</td>
-											<td>Unassigned</td>
+											<td><?php echo $row['student_email']; ?></td>
+											<td><?php echo $row['student_mobile']; ?></td>
+                                            <td>
+                                            <a href="#"<?php echo $row['id']; ?>&operation=edit" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
+
+                                             <a href="#" class="btn btn-danger delete_btn" data-toggle="modal" data-target="#confirm-delete-<?php echo $row['id']; ?>"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </td>
 											<td><div class="dropdown">
 												<a href="#" class="btn btn-simple dropdown-toggle" data-toggle="dropdown">													
 													<i class="fa fa-ellipsis-v"></i>
 												</a>
+
+												
 												<ul class="dropdown-menu pull-right">
 													<li><a href="#">Action</a></li>
 													<li><a href="#">Another action</a></li>
@@ -444,6 +465,9 @@
 												</ul>
 											</div></td>
 										</tr>
+										<?php }?>
+										
+									<!---
 										<tr>
 											<td><div class="checkbox">
 													<label><input type="checkbox" name="optionsCheckboxes"></label>
@@ -668,7 +692,7 @@
 													<li><a href="#">One more separated link</a></li>
 												</ul>
 											</div></td>
-										</tr>
+										</tr>-->
 									</tbody>
 								</table>
 							</div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,8 @@
 <!-- Color style -->
 <link href="landing-page/css/colors/default.css" rel="stylesheet">
 
-<link rel="stylesheet" href="landing-page/css/pop.css">
+<link rel="stylesheet" href="landing-page/css/popup.css">
+
 </head>
 
 <body data-spy="scroll" data-target="#navbar-menu">
@@ -255,21 +257,34 @@
         <!---pup up-->
 <!--Trigger-->
 <!-- The Modal (contains the sign up  form) -->
-
 <div id="signup" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    
     <div class="modal-content">
       <div class="modal-body">
+      <?php
+        if(isset($_SESSION['status']))
+        {
+            
+            ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>hey!</strong> <?php echo $_SESSION['status']; ?>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+            <?php
+            unset($_SESSION['status']);
+        }
+        ?>
         <button data-dismiss="modal" class="close">&times;</button>
+        
         <h4>sign up</h4>
-        <form action="#">
-          <input type="text" name="username" class="username form-control" placeholder="Username"/>
-          <input type="email" name="email" class="email form-control" placeholder="email"/>
-          <input type="password" name="password" class="password form-control" placeholder="password"/>
+        <form action="college_register.php" method="POST" enctype="multipart/form-data">
+          <input type="text" name="username" class="username form-control" required placeholder="Username"/>
+          <input type="email" name="email" class="email form-control" required placeholder="Email"/>
+          <input type="password" name="pswd" class="password form-control" required placeholder="Password"/>
           <!--<input class="btn login" type="submit" value="Login" />-->
-         <div class="text-center btt"><button class="btn btn-sm btn-custom">sign up</button></div> 
+          <div class="text-center btt"><button type="submit" name="sign_up" class="btn btn-sm btn-custom">sign up</button></div> 
         </form>
+        
       </div>
     </div>
   </div>  
@@ -283,10 +298,10 @@
         <div class="modal-body">
           <button data-dismiss="modal" class="close">&times;</button>
           <h4>login</h4>
-          <form action="#">
-            <input type="email" name="email" class="email form-control" placeholder="email"/>
-            <input type="password" name="password" class="password form-control" placeholder="password"/>
-           <div class="text-center"><a href="collage.html" class="btn btn-sm btn-custom">log in</a></div> 
+          <form action="college_login.php" method="POST">
+            <input type="email" name="email" class="email form-control" required placeholder="email"/>
+            <input type="password" name="pswd" class="password form-control" required placeholder="password"/>
+           <div class="text-center btt"><button class="btn btn-sm btn-custom">login</button></div> 
           </form>
         </div>
       </div>
@@ -458,17 +473,6 @@
 <!-- js placed at the end of the document so the pages load faster --> 
 <script src="landing-page/js/jquery-2.1.4.min.js"></script> 
 <script src="landing-page/js/bootstrap.min.js"></script> 
-<script>
-    // Get the modal
-    var modal = document.getElementById('id01');
-    
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    </script>
 
 <!-- Jquery easing --> 
 <script type="text/javascript" src="landing-page/js/jquery.easing.1.3.min.js"></script> 
